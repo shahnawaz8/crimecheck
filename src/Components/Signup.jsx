@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
+import {  useNavigate } from "react-router-dom";
 import { registerUser } from "../Redux/action";
 export const SignUp =()=>{
     const [email,setEmail] = useState('');
@@ -9,7 +10,7 @@ export const SignUp =()=>{
     const [c_password,setC_password] = useState('');
     
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
 
     const handleRegister =()=>{
       const registerData = {
@@ -21,6 +22,8 @@ export const SignUp =()=>{
       }
       console.log(registerData);
       dispatch(registerUser(registerData))
+      navigate('/')
+    
     }
 
   return (

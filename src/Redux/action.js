@@ -24,11 +24,17 @@ export const loginFailure=()=>({
 
 export const registerUser=(payload)=>(dispatch)=>{
     console.log('signup',payload);
+    const em = payload.email;
+    const pas = payload.password;
+    const postData = {
+        email:em,
+        password:pas
+    }
+
     axios.post("http://localhost:5000/api/user/register",payload)
     .then((res)=>{
-        axios.post("http://localhost:5000/api/user/login",{payload})
-        .then((loginRes)=>dispatch(loginSuccess({token:loginRes.data.token})))
-        .catch((er)=>dispatch(loginFailure()))
+
+        login(postData);
     })
     .catch((err)=>{
         console.log(err)

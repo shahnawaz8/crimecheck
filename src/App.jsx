@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { SignIn } from './Components/Signin';
 import { SignUp } from './Components/Signup';
 function App() {
-  const isAuth = useSelector((store)=>store.isAuthenticate);
+  const isAuth = useSelector((store)=>store.isAuth);
   console.log(isAuth,'is auth home');
   // if the user is not logged in then the some will be private and not accesseble with out login
   const PrivateRoute = ({isAuth,children})=>{

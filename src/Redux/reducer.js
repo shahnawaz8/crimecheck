@@ -4,6 +4,7 @@ const initState = {
     loading:false,
     error:false,
     email:"",
+    isAuth:true,
     isAuthenticate:false,
     token:"",
     username:""
