@@ -7,10 +7,11 @@ import { SignIn } from './Components/Signin';
 import { SignUp } from './Components/Signup';
 function App() {
   const isAuth = useSelector((store)=>store.isAuthenticate);
-  console.log(isAuth);
+  console.log(isAuth,'is auth home');
   // if the user is not logged in then the some will be private and not accesseble with out login
   const PrivateRoute = ({isAuth,children})=>{
-      return isAuth?children:<Navigate to={'/login'}/>;
+    console.log(isAuth,'inside priveate route')  
+    return isAuth ? children : <Navigate to={'/login'}/>;
   }
   return (
     <div className="App">

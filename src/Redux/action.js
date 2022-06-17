@@ -24,13 +24,9 @@ export const loginFailure=()=>({
 
 export const registerUser=(payload)=>(dispatch)=>{
     console.log('signup',payload);
-    axios.post("https://connection-vala.herokuapp.com/api/user/register",payload)
+    axios.post("http://localhost:5000/api/user/register",payload)
     .then((res)=>{
-        axios.post("https://connection-vala.herokuapp.com/api/user/register/login",{
-            headers:{
-                "Authorization":`Bearer ${res.data.token}`
-            }
-        })
+        axios.post("http://localhost:5000/api/user/login",{payload})
         .then((loginRes)=>dispatch(loginSuccess({token:loginRes.data.token})))
         .catch((er)=>dispatch(loginFailure()))
     })
@@ -41,8 +37,8 @@ export const registerUser=(payload)=>(dispatch)=>{
 
 export const login=(payload)=>(dispatch)=>{
     dispatch(loginLoading());
-    // console.log(payload,'from payload');
-    axios.post(`https://connection-vala.herokuapp.com/api/user/login`,payload)
+    console.log(payload,'from payload');
+    axios.post(`http://localhost:5000/api/user/login`,payload)
     .then((res)=>{
         console.log(res.data.token,"action")
         dispatch(loginSuccess({token:res.data.token}))
